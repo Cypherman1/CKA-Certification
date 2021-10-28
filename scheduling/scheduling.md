@@ -108,9 +108,8 @@ kubectl get pod --selector env=prod,bu=finance,tier=frontend
 
 #### Q5
 
-#### **`replicaset-definition-1.yaml`**
-
-```
+{% code title="replicaset-definition-1.yaml" %}
+```yaml
 apiVersion: apps/v1
 kind: ReplicaSet
 metadata:
@@ -129,8 +128,15 @@ spec:
        - name: nginx
          image: nginx
 ```
+{% endcode %}
 
 ## 3. Taints And Tolerations
+
+### 3.1. Taints - Node
+
+```
+kubectl taint nodes node-name key=value:taint-effect
+```
 
 #### taint-effect:
 
@@ -308,3 +314,36 @@ spec:
                 operator: Exists
 ```
 {% endcode %}
+
+## 6. Resource Requirement and Limits
+
+### 6.1. Resource requests
+
+Default:
+
+* CPU: 0.5
+* MEM: 256Mi
+
+Config in pod or deployment definition
+
+{% code title="pod-definition.yaml" %}
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+    name: simple-webapp-color
+    labels:
+        name: simple-webapp-color
+spec:
+    containers:
+    - name: simple-webapp-color
+      image: simple-webapp-color
+      ports:
+      - containerPort: 8080
+      resources:
+        requests:
+          memory: "1Gi"
+          cpu: 1
+```
+{% endcode %}
+
