@@ -379,3 +379,105 @@ spec:
           cpu: 2
 ```
 {% endcode %}
+
+## 6. Daemon Sets
+
+### 6.1. DaemonSet definition
+
+{% code title="daemon-set-definition.yaml" %}
+```yaml
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: monitoring-daemon
+spec:
+  selector:
+    matchLabels:
+      app: monitoring-agent
+  template:
+    metadata:
+      labels:
+        app: monitoring-agent
+    spec:
+      containers:
+      - name: monitoring-agent
+        image: monitoring-agent
+```
+{% endcode %}
+### 6.2. Lab
+
+{% code title="daemon-set-definition.yaml" %}
+```yaml
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+   labels:
+     app: elasticsearch
+   name: elasticsearch
+   namespace: kube-system
+spec:
+   selector:
+     matchLabels:
+       app: elasticsearch
+   template:
+     metadata:
+       labels:
+         app: elasticsearch
+     spec:
+       containers:
+       - image: k8s.gcr.io/fluentd-elasticsearch:1.20
+         name: fluentd-elasticsearch
+```
+{% endcode %}
+## 7. Static Pods
+### 7.1. Create static pods
+Define manifest path in `kubelet.service` file
+
+{% code title="kubelet.service" %}
+```
+ExecStart=/usr/local/bin/kubelet \\
+    --pod-manifest-path=/etc/Kubernetes/manifest \\
+    ...
+```
+{% endcode %}
+
+or
+
+{% code title="kubelet.service" %}
+```
+ExecStart=/usr/local/bin/kubelet \\
+    --config=kubeconfig.yaml \\
+    ...
+```
+{% endcode %}
+
+{% code title="kubeconfig.yaml" %}
+```
+staticPodPath:/etc/kubernetes/manifest
+    ...
+```
+{% endcode %}
+
+### 7.2. Lab
+
+{% code title="static-busybox-pod.yaml" %}
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: static-busybox
+  name: static-busybox
+spec:
+  containers:
+  - image: busybox
+    name: static-busybox
+    command: [ "sh", "-ec", "sleep 1000" ]
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}
+```
+{% endcode %}
+
