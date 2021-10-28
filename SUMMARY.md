@@ -1,4 +1,5 @@
 # Table of contents
 
 * [CKA Certification](README.md)
-  * [Scheduling](readme/scheduling.md)
+  * [Scheduler](readme/scheduler/README.md)
+    * [Scheduling](readme/scheduler/scheduling.md)
