@@ -6,11 +6,10 @@ Insert `nodeName` field into Pod `spec` definition.
 
 ## 2. Labels and Selectors
 
-### Define `lables` in `metadata` definition
+### 2.1. Define `lables` in `metadata` definition
 
-#### **`pod-definition.yaml`**
-
-```
+{% code title="pod-definition.yaml" %}
+```yaml
 apiVersion: v1
 kind: Pod
 metadata:
@@ -27,18 +26,18 @@ spec:
       ports:
       - containerPort: 8080  
 ```
+{% endcode %}
 
-### Select
-
-```
-kubectl get pods --selector app=App1
-```
-
-### Service
-
-#### **`service-definition.yaml`**
+### 2.2. Select
 
 ```
+kubectl get pods --selector app=App12.3.
+```
+
+### 2.3. Service
+
+{% code title="service-definition.yaml" %}
+```yaml
 apiVersion: v1
 kind: Service
 metadata:
@@ -51,12 +50,12 @@ spec:
       port: 80
       targetPort: 9376
 ```
+{% endcode %}
 
-### Replicaset
+### 2.4. Replicaset
 
-#### **`replicaset-definition.yaml`**
-
-```
+{% code title="replicaset-definition.yaml" %}
+```yaml
 apiVersion: apps/v1
 kind: ReplicaSet
 metadata:
@@ -79,8 +78,9 @@ spec
             - name: simple-webapp
               image: simple-webapp
 ```
+{% endcode %}
 
-### Lab
+### 2.5. Lab
 
 #### Q1
 
