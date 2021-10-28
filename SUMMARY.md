@@ -1,6 +1,7 @@
 # Table of contents
 
 * [CKA Certification](README.md)
+  * [Core Concepts](readme/core-concepts.md)
   * [Scheduling](readme/scheduling/README.md)
     * [Manual scheduling](readme/scheduling/manual-scheduling.md)
     * [Labels and Selectors](readme/scheduling/labels-and-selectors.md)
@@ -11,3 +12,11 @@
     * [Daemon Sets](readme/scheduling/daemon-sets.md)
     * [Static Pods](readme/scheduling/static-pods.md)
     * [Multiple Schedulers](readme/scheduling/multiple-schedulers.md)
+  * [Logging and Monitoring](readme/logging-and-monitoring.md)
+  * [Application Lifecycle Management](readme/application-lifecycle-management.md)
+  * [Cluster Maintenance](readme/cluster-maintenance.md)
+  * [Security](readme/security.md)
+  * [Storage](readme/storage.md)
+  * [Networking](readme/networking.md)
+  * [Design and Install a K8s Cluster](readme/design-and-install-a-k8s-cluster.md)
+  * [Troubleshooting](readme/troubleshooting.md)
