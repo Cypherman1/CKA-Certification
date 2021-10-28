@@ -242,7 +242,6 @@ spec:
                       operator: In/NotIn/Exists(no need values)
                       values:
                       - Large
-
 ```
 
 ### 5.2. Lab
@@ -404,6 +403,7 @@ spec:
         image: monitoring-agent
 ```
 {% endcode %}
+
 ### 7.2. Lab
 
 {% code title="daemon-set-definition.yaml" %}
@@ -429,8 +429,11 @@ spec:
          name: fluentd-elasticsearch
 ```
 {% endcode %}
+
 ## 8. Static Pods
+
 ### 8.1. Create static pods
+
 Define manifest path in `kubelet.service` file
 
 {% code title="kubelet.service" %}
@@ -497,7 +500,6 @@ ExecStart=/usr/local/bin/kube-scheduler \\
 ```
 {% endcode %}
 
-
 {% code title="my-custom-scheduler.service" %}
 ```
 ExecStart=/usr/local/bin/kube-scheduler \\
@@ -508,8 +510,8 @@ ExecStart=/usr/local/bin/kube-scheduler \\
 
 ### 9.2. Deploy additional scheduler use kubeadm
 
-{% code title="/etc/kubernetes/manifests/kube-scheduler.yaml
-" %}
+{% code title="/etc/kubernetes/manifests/kube-scheduler.yaml " %}
+
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -526,8 +528,6 @@ spec:
     image: k8s.gcr.io/kube-scheduler-amd64:v1.11.3
     name: kube-scheduler
 ```
-{% endcode %}
-
 
 {% code title="my-custom-scheduler.yaml" %}
 ```yaml
@@ -567,6 +567,7 @@ spec:
 {% endcode %}
 
 ### 9.4. Lab
+
 {% code title="my-custom-scheduler.yaml" %}
 ```yaml
 apiVersion: v1
